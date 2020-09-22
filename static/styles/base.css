@@ -1,0 +1,35 @@
+html, body {
+    font-family: sans-serif;
+}
+
+img.yew-logo {
+    float: left;
+}
+
+nav[role="navigation"] ul {
+    display: inline-block;
+    padding: .25em;
+    list-style: none;
+}
+
+[role="navigation"] ul[role="menubar"] li[role="menuitem"] {
+    display: inline-block;
+    padding: .25em;
+    margin: 0 1em;
+    font-size: 1.5em;
+    border: 1px solid #a99f9f;
+    border-radius: 3px;
+}
+
+nav[role="navigation"] ul[role="menubar"] li[role="menuitem"] a {
+    text-decoration: none;
+    color: #2d2d2d;
+}
+
+nav[role="navigation"] ul[role="menubar"] li[role="menuitem"].selected {
+    background-color: #d1d1e8;
+}
+
+nav[role="navigation"] ul[role="menubar"] li[role="menuitem"]:hover {
+    background-color: #bcffcd;
+}

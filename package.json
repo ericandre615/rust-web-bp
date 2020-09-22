@@ -1,0 +1,28 @@
+{
+  "name": "rust-yew-wasm",
+  "version": "0.1.0",
+  "description": "Basic Isomorphic boilerplate for Rust, Yew, Wasm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cargo build",
+    "build:client": "wasm-pack build client --target web --out-name wasm --out-dir ../static/build",
+    "build:server": "cargo build --manifest-path=server/Cargo.toml",
+    "build:wasm": "wasm-pack build --target web --out-name wasm --out-dir ./static/build",
+    "start": "npm run start:client && npm run start:server",
+    "start:client": "webpack-dev-server",
+    "start:server": "cargo run --manifest-path=server/Cargo.toml"
+  },
+  "keywords": [
+    "Rust",
+    "Yew",
+    "wasm",
+    "boilerplate",
+    "isomorphic"
+  ],
+  "devDependencies": {
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
