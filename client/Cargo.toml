@@ -7,6 +7,7 @@ edition = "2018"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
+shared = { path = "../shared" }
 yew = { version = "0.17", features = ["services"] }
 yew-router = "0.14.0"
 wasm-bindgen = "0.2.67"

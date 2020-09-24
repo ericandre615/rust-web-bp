@@ -8,15 +8,9 @@ use yew::{
 };
 use yew::services::{ConsoleService, FetchService};
 use yew::services::fetch::{Request, Response, FetchTask};
-use serde::{Serialize, Deserialize};
 use dotenv_codegen::dotenv;
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct ApiInfo {
-    version: f32,
-    server: String,
-    deps: Vec<String>,
-}
+use shared::models::api::ApiInfo;
 
 pub enum Msg {
     FetchInfo,
