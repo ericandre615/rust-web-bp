@@ -17,7 +17,7 @@ pub struct ApiInfo {
 
 async fn get_info() -> Result<HttpResponse, Error> {
     let api_info = ApiInfo {
-        version: 1.0,
+        version: 1.2,
         server: "actix-web",
         deps: vec![
             "actix-multipart 0.3",

@@ -5,7 +5,6 @@ use yew::{
     ShouldRender,
     Html,
     html,
-    Callback,
 };
 
 use yew_router::{
@@ -22,7 +21,7 @@ pub struct RouterNavProps {
 }
 
 pub struct RouterNav {
-    link: ComponentLink<Self>,
+    _link: ComponentLink<Self>,
     props: RouterNavProps,
     current_route: Route,
     _route_agent: RouteAgentBridge,
@@ -44,7 +43,7 @@ impl Component for RouterNav {
         let current_route = RouteService::new().get_route();
 
         Self {
-            link,
+            _link: link,
             props,
             current_route,
             _route_agent: route_agent,
@@ -71,8 +70,6 @@ impl Component for RouterNav {
     }
 
     fn view(&self) -> Html {
-        let current_route = self.current_route.clone();
-
         html! {
             <nav role="navigation">
                 <ul role="menubar">
