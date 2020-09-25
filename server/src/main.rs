@@ -7,6 +7,7 @@ use actix_web::{
     HttpServer,
 };
 use dotenv::dotenv;
+use env_logger;
 
 mod routes;
 use routes::router;
@@ -15,7 +16,9 @@ use routes::router;
 async fn main() -> std::io::Result<()> {
     dotenv().ok();
 
-    std::env::set_var("RUST_LOG", "actix_server=info");
+    std::env::set_var("RUST_LOG", "actx_web=debug,actix_web=info,actix_web=error,actix_server=error,actix_server=info");
+    env_logger::init();
+
     let (default_host, default_port) = (String::from("0.0.0.0"), String::from("3000"));
     let host = dotenv::var("API_HOST").unwrap_or(default_host);
     let port = dotenv::var("API_PORT").unwrap_or(default_port);

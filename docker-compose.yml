@@ -1,0 +1,71 @@
+version: '3'
+
+services:
+    pgdb:
+        image: postgres:9-alpine
+        restart: always
+        env_file: .env
+        ports:
+            - "5433:5432"
+        volumes:
+            - pgdata:/var/lib/postgresql/data
+    #rust_deps:
+    #    env_file: .env
+    #    build: ./
+    #    ports:
+    #        - "8802:3001"
+    #    working_dir: /
+    #    volumes:
+    #      - deps:/usr/lib/:delegated
+    #    command: ["cargo build --target x86_64-unknown-linux-musl --release"]
+    rust_client:
+        env_file: .env
+        build:
+            context: ./
+            dockerfile: ./devops/dockerfiles/client/local.dockerfile
+        #depends_on:
+        #    - rust_deps
+        ports:
+            - "8080:8080"
+            - "433:433"
+        working_dir: /home/app
+        volumes:
+            - ./client:/home/app/client:delegated
+            - ./static:/home/app/static:delegated
+            #- deps:/home/app
+        command: ["nginx", "-g", "daemon off;"]
+    rust_server:
+        restart: on-failure
+        depends_on:
+            - pgdb
+            #- rust_deps
+        env_file: .env
+        build:
+            context: ./
+            dockerfile: ./devops/dockerfiles/services/local.dockerfile
+        ports:
+            - "3000:3000"
+        working_dir: /home/app
+        volumes:
+          - ./server:/home/app/server:delegated
+          #- deps:/home/app
+        command: ["/usr/bin/server"]
+    #rust_data:
+    #    depends_on:
+    #        - pgdb
+    #        - rust_deps
+    #    env_file: .env
+    #    build: ./data
+    #    volumes:
+    #        - ./data/:/home/app/data:delegated
+    #        - deps:/home/app
+    diesel_cli:
+        env_file: .env
+        depends_on:
+            - pgdb
+        build: ./devops/dockerfiles/diesel
+
+volumes:
+    pgdata:
+    #deps:
+

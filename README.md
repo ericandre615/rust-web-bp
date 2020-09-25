@@ -5,6 +5,10 @@ This is just a basic setup I've been working with using Rust for both
 client and server on the web using wasm.
 
 ### Usage
+#### local with Docker
+`docker-compose up`
+
+#### local without Docker
 Basic setup is using a `package.json` in the root. This is nice for running commands, however maybe there is a better way
 that would not rely on having `nodejs`/`npm`? Which would require something other than `webpack` as well, which is current just for
 a basic dev server. To run in the current state you will first need to `mv` or `rename` `.env.example` to `.env`. First, you need to `build` with `cargo`.
@@ -22,4 +26,5 @@ There will additional branches for different types of configuration.
 
 - `feature/shared`: adds a `shared` workspace directory that both `client` and `server` pull in that can have data types shared by
 both or any other utilities that may be useful to shared between the entire project.
-
+- `feature/docker`: adds docker-compose with postgres database container, diesel cli container, and client and server in containers.
+However, there is still more to do to get this fully working for now

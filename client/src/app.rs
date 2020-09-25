@@ -33,6 +33,7 @@ impl Component for App {
         html! {
             <main id="app">
                 <img src="/assets/yew-logo.svg" class="yew-logo" />
+                <h6>{ "REbuild without rebuilding deps" }</h6>
                 <RouterNav />
                 { router() }
             </main>
