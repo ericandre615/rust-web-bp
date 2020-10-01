@@ -1,7 +1,6 @@
 use yew::{
     Component,
     ComponentLink,
-    Properties,
     ShouldRender,
     Html,
     html,
@@ -73,14 +72,13 @@ impl Component for Info {
                             Msg::FetchComplete(api_info)
                         } else {
                             ConsoleService::info("Fetch Error");
-                            Msg::FetchError(format!("Fetch Failed"))
+                            Msg::FetchError(String::from("Fetch Failed"))
                         }
                     })
                 ).unwrap();
 
                 self.fetch_task = Some(task);
             },
-            _ => {},
         }
 
         true
@@ -111,7 +109,7 @@ impl Info {
         let app_info = match &self.info {
             Some(info) => {
                 let api_info: &ApiInfo = info;
-                let version = api_info.version.clone();
+                let version = api_info.version;
                 let server = api_info.server.clone();
                 html! {
                     <div class="info">

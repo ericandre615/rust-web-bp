@@ -4,32 +4,28 @@ use yew::prelude::{
     Html,
     html,
     ShouldRender,
-    KeyboardEvent,
-    Callback,
 };
 
 use crate::routes::router;
 use crate::components::nav::RouterNav;
 
 pub struct App {
-    link: ComponentLink<Self>,
 }
 
 impl Component for App {
     type Message = ();
     type Properties = ();
 
-    fn create(_: Self::Properties, link: ComponentLink<Self>) -> Self {
+    fn create(_props: Self::Properties, _link: ComponentLink<Self>) -> Self {
         Self {
-            link,
         }
     }
 
-    fn update(&mut self, msg: Self::Message) -> ShouldRender {
+    fn update(&mut self, _msg: Self::Message) -> ShouldRender {
         true
     }
 
-    fn change(&mut self, props: Self::Properties) -> ShouldRender {
+    fn change(&mut self, _props: Self::Properties) -> ShouldRender {
         true
     }
 

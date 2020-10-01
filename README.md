@@ -17,4 +17,11 @@ The root `Cargo.toml` has `workspaces` setup. So it will build both the client a
 - `start:client`: starts the client using `webpack-dev-server`
 - `start:server`: starts the server using `cargo run`
 
+### Additional
+There will additional branches for different types of configuration.
+
+- [`feature/shared`](https://github.com/ericandre615/rust-web-bp/tree/feature/shared): adds a `shared` workspace directory that both `client` and `server` pull in that can have data types shared by
+both or any other utilities that may be useful to shared between the entire project.
+- [`feature/docker`](https://github.com/ericandre615/rust-web-bp/tree/feature/docker): adds `docker-compose` with containers for postgres database, `client`, `server`, `diesel_cli`. Not fully implemented
+
 
