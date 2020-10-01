@@ -2,8 +2,10 @@
 FROM rust:1.46.0 as builder
 
 ENV PKG_CONFIG_ALLOW_CROSS=1
-ARG RUST_TARGET=x86_64-unknown-linux-musl
-ARG RUST_BUILD_MODE=release
+# Using ARG seems to have basically destroyed caching
+# Try using ENV instead, if cache is still destroyed everytime move back to hard coded values
+ENV RUST_TARGET=x86_64-unknown-linux-musl
+ENV RUST_BUILD_MODE=release
 
 RUN apt-get update && apt-get -y install ca-certificates cmake musl-tools libssl-dev && rm -rf /var/lib/apt/lists/*
 

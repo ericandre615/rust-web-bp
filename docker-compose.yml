@@ -6,7 +6,7 @@ services:
         restart: always
         env_file: .env
         ports:
-            - "5433:5432"
+            - "5432:5432"
         volumes:
             - pgdata:/var/lib/postgresql/data
     #rust_deps:
@@ -63,7 +63,9 @@ services:
         env_file: .env
         depends_on:
             - pgdb
-        build: ./devops/dockerfiles/diesel
+        build:
+            context: ./data
+            dockerfile: ../devops/dockerfiles/diesel/local.dockerfile
 
 volumes:
     pgdata:

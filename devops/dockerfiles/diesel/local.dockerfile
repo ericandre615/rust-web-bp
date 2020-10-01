@@ -9,9 +9,13 @@ RUN apt-get update && \
 
 RUN cargo install diesel_cli --version ${DIESEL_CLI_VERSION} --no-default-features --features postgres
 
+# need to copy over deps too, such as libpq.so.5 into the stretch-slim image
 FROM debian:stretch-slim
 
+# lots of library deps for diesel
 COPY --from=builder /usr/local/cargo/bin/diesel /bin/diesel
+COPY --from=builder /usr/lib/x86_64-linux-gnu/ /usr/lib/x86_64-linux-gnu/
+COPY --from=builder /lib/x86_64-linux-gnu/ /lib/x86_64-linux-gnu/
 
 WORKDIR /usr/src
 

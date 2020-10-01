@@ -27,6 +27,7 @@ async fn get_info() -> Result<HttpResponse, Error> {
             "serde 1.0.115",
             "serde_json 1.0.57",
             "dotenv 0.15.0",
+            "cargo-watch",
         ],
     };
 
